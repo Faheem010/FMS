@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FlatsMangmentSystem</string>
+    <string name="userame">Userame</string>
+    <string name="login">Login</string>
+
+    <string-array name="items">
+        <item>Electricity Bill</item>
+        <item>Water Bill</item>
+        <item>Food</item>
+        <item>Rent</item>
+        <item>Others</item>
+    </string-array>
+</resources>
