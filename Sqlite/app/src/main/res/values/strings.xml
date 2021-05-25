@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sqlite</string>
+    <string name="name">Please enter your Name</string>
+    <string name="age">Please enter your age</string>
+    <string name="isActive">Active or Not</string>
+    <string name="buttonAdd">Add Record</string>
+    <string name="buttonView">View Record</string>
+    <string name="rollNumber">Please enter your rollNumber</string>
+</resources>
