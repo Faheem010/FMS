@@ -2,6 +2,13 @@
     <string name="app_name">FlatsMangmentSystem</string>
     <string name="userame">Userame</string>
     <string name="login">Login</string>
+    <string name="add_user">ADD User</string>
+    <string name="view_user_list">View User List</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="view_expense_list">View Expense List</string>
+    <string name="name">name</string>
+    <string name="email">email</string>
+    <string name="phone">phone</string>
 
     <string-array name="items">
         <item>Electricity Bill</item>

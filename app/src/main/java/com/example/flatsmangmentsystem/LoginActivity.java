@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
                     Boolean checkUserPassword= DB.checkUsernamePassword(user,pass);
                     if(checkUserPassword==true){
                         Toast.makeText(LoginActivity.this, "You are Logged in", Toast.LENGTH_LONG).show();
-                        Intent intent=new Intent(getApplicationContext(),Home.class);
+                        Intent intent=new Intent(getApplicationContext(), HomeView.class);
                         startActivity(intent);
                     }else{
                         Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_LONG).show();

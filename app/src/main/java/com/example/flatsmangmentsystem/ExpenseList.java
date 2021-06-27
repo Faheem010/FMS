@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class ExpenseList extends AppCompatActivity {
     ListView listView;
+    DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,12 +19,17 @@ public class ExpenseList extends AppCompatActivity {
         String name=getIntent().getStringExtra("type").toLowerCase();
         String price=getIntent().getStringExtra("price").toLowerCase();
 
-        final ArrayList<String> itemsArrayList=new ArrayList<String>();
+        dbHelper=new DBHelper(this);
+      //  dbHelper.getExpense();
+
+         ArrayList <String> itemsArrayList=new ArrayList<String>();
+      // itemsArrayList=dbHelper.getExpense();
         itemsArrayList.add(name);
-        itemsArrayList.add(price);
+       itemsArrayList.add(price);
 
         final ArrayAdapter<String> itemsArrayAdapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,itemsArrayList);
         listView.setAdapter(itemsArrayAdapter);
     }
+
 }

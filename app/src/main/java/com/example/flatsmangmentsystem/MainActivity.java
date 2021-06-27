@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.android.material.appbar.AppBarLayout;
 
 public class MainActivity extends AppCompatActivity {
    EditText username,password,repass;
@@ -44,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                             Boolean insert = DB.insertData(user, pass);
                             if (insert == true) {
                                 Toast.makeText(MainActivity.this, "User Registered Succecfully", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getApplicationContext(), Home.class);
+                                Intent intent = new Intent(getApplicationContext(), HomeView.class);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(MainActivity.this, "User Registered failed", Toast.LENGTH_LONG).show();
