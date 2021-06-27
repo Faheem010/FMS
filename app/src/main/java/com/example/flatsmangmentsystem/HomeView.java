@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class HomeView extends AppCompatActivity {
      Button addUser,userView,addExpense,viewExpense;
+    DBHelper dbHelper=new DBHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,8 @@ public class HomeView extends AppCompatActivity {
        userView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-
+               Intent intent=new Intent(getApplicationContext(),UserList.class);
+               startActivity(intent);
            }
        });
        addExpense.setOnClickListener(new View.OnClickListener() {

@@ -10,22 +10,19 @@ import java.util.ArrayList;
 
 public class ExpenseList extends AppCompatActivity {
     ListView listView;
-    DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense_list);
         listView=findViewById(R.id.listView);
-        String name=getIntent().getStringExtra("type").toLowerCase();
-        String price=getIntent().getStringExtra("price").toLowerCase();
+     //   String name=getIntent().getStringExtra("type").toLowerCase();
+     //   String price=getIntent().getStringExtra("price").toLowerCase();
 
-        dbHelper=new DBHelper(this);
+       DBHelper dbHelper=new DBHelper(this);
       //  dbHelper.getExpense();
 
-         ArrayList <String> itemsArrayList=new ArrayList<String>();
-      // itemsArrayList=dbHelper.getExpense();
-        itemsArrayList.add(name);
-       itemsArrayList.add(price);
+         ArrayList<String> itemsArrayList=new ArrayList<String>();
+          itemsArrayList=dbHelper.getExpense();
 
         final ArrayAdapter<String> itemsArrayAdapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,itemsArrayList);

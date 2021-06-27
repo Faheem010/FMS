@@ -1,22 +1,20 @@
 package com.example.flatsmangmentsystem;
 
 public class ExpenseModel {
-
+    private String typeExpanse;
     private String price;
-    private String TypeExpnse;
 
-    public ExpenseModel(String typeExpnse, String price) {
-        this.TypeExpnse = typeExpnse;
+    public ExpenseModel(String typeExpanse, String price) {
+        this.typeExpanse = typeExpanse;
         this.price = price;
     }
 
-
-    public String getTypeExpnse() {
-        return TypeExpnse;
+    public String getTypeExpanse() {
+        return typeExpanse;
     }
 
-    public void setTypeExpnse(String typeExpnse) {
-        TypeExpnse = typeExpnse;
+    public void setTypeExpanse(String typeExpanse) {
+        this.typeExpanse = typeExpanse;
     }
 
     public String getPrice() {
@@ -30,8 +28,8 @@ public class ExpenseModel {
     @Override
     public String toString() {
         return "ExpenseModel{" +
-                "price='" + price + '\'' +
-                ", TypeExpnse='" + TypeExpnse + '\'' +
+                "typeExpanse='" + typeExpanse + '\'' +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

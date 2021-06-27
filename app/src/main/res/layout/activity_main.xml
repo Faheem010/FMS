@@ -10,12 +10,14 @@
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="341dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="200dp"
-        android:hint="Userame"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Username"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -36,18 +38,41 @@
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:hint="Re-enter password" />
+
+    <EditText
+        android:id="@+id/editEmailAddress"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rePassword"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:hint="Enter Email Address" />
+    <EditText
+        android:id="@+id/editPhoneNumber"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editEmailAddress"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:hint="Enter Phone NUmber"
+        android:inputType="phone" />
 
     <Button
         android:id="@+id/SignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rePassword"
+        android:layout_below="@+id/editEmailAddress"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="start"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="81dp"
         android:text="Signup or Register"
         app:backgroundTint="#1DE9B6" />
 
@@ -56,18 +81,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/SignUp"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="start"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Login"
         app:backgroundTint="#1DE9B6" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="184dp"
-        android:layout_height="144dp"
+        android:layout_width="138dp"
+        android:layout_height="68dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="112dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="5dp"
         app:srcCompat="@drawable/fms2" />
+
+
 </RelativeLayout>

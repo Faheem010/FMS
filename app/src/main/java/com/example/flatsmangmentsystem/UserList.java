@@ -17,14 +17,20 @@ public class UserList extends AppCompatActivity {
         setContentView(R.layout.activity_user_list);
         listView=findViewById(R.id.listOfUser);
 
-        String name=getIntent().getStringExtra("name").toString();
-        String phone=getIntent().getStringExtra("phone").toString();
-        String email=getIntent().getStringExtra("email").toString();
+     //   String name=getIntent().getStringExtra("name").toString();
+     //   String phone=getIntent().getStringExtra("phone").toString();
+     //   String email=getIntent().getStringExtra("email").toString();
 
-        final ArrayList<String> itemsArrayList=new ArrayList<String>();
-        itemsArrayList.add(name);
-        itemsArrayList.add(phone);
-        itemsArrayList.add(email);
+     //   final ArrayList<String> itemsArrayList=new ArrayList<String>();
+     //   itemsArrayList.add(phone);
+      //  itemsArrayList.add(email);
+
+       DBHelper dbHelper=new DBHelper(this);
+
+        ArrayList <String> itemsArrayList=new ArrayList<String>();
+        itemsArrayList=dbHelper.getUsers();
+
+
 
         final ArrayAdapter<String> itemsArrayAdapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,itemsArrayList);

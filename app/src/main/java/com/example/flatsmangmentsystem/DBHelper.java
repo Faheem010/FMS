@@ -5,19 +5,19 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Switch;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static String myDB = "login.db";
-    private static String USERS = "users";
-    private static String EXPENSE = "expense";
-    private static String expenseType = "expenseType";
-    private static String price = "price";
-    private static String members ="member";
+    private static String myDB="FMS.db";
+    private static String EXPENSE="expenses";
+    private static String USERS="users";
+    private static String typeExpanse="typeExpanse";
+    private static String price="price";
+    private static String members="member";
 
     public DBHelper(@Nullable Context context) {
         super(context,myDB,null,1);
@@ -25,8 +25,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase myDB) {
-        String users="create table " +USERS+ " (username Text primary key ,password Text)";
-        String expenses="create table "+ EXPENSE+ " ( id INTEGER primary key ," + expenseType + " Text," + price+ " Text)";
+        String expenses="create table "+ EXPENSE+ " ( id INTEGER primary key ," + typeExpanse + " Text," + price+ " Text)";
+        String users="create table "+ USERS +" ( id INTEGER primary key ,username Text,password Text,email Text,phone Text)";
         myDB.execSQL(users);
         myDB.execSQL(expenses);
     }
@@ -37,12 +37,15 @@ public class DBHelper extends SQLiteOpenHelper {
         myDB.execSQL("Drop table if exists "+EXPENSE);
         onCreate(myDB);
     }
-    public  Boolean insertData(String username ,String password){
+    public  Boolean insertData(String username ,String password, String email, String phone){
         SQLiteDatabase myDB=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
+        contentValues.put("phone", phone);
         contentValues.put("username",username);
         contentValues.put("password",password);
-        long result=myDB.insert("users",null,contentValues);
+        contentValues.put("email",email);
+        long result=myDB.insert(USERS,"null",contentValues);
+        //myDB.close();
         if(result==-1) return false;
         else
             return true;
@@ -61,30 +64,56 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return false;
     }
-    public  Boolean insertExpense(ExpenseModel expenseModel){
+  /*  public  Boolean insertExpense(String expense,String price){
         SQLiteDatabase myDB=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put("expenseType",expenseModel.getTypeExpnse());
+        contentValues.put("expense",expense);
+        contentValues.put("price",price);
+        long res=myDB.insert(EXPENSE,"null",contentValues);
+        if(res==-1) return false;
+        else
+            return true;
+    }*/
+
+    public  Boolean insertExpense(ExpenseModel expenseModel){
+
+        SQLiteDatabase myDB=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("typeExpanse",expenseModel.getTypeExpanse());
         contentValues.put("price",expenseModel.getPrice());
-        long res=myDB.insert("expense",null,contentValues);
-        myDB.close();
+        long res=myDB.insert(EXPENSE,"null",contentValues);
         if(res==-1) return false;
         else
             return true;
     }
+
     public ArrayList getExpense(){
         SQLiteDatabase myDB=this.getReadableDatabase();
         ArrayList <String> arrayList=new ArrayList<>();
         Cursor cursor=myDB.rawQuery("SELECT * FROM "+EXPENSE,null);
         cursor.moveToFirst();
             while (!cursor.isAfterLast()){
-                arrayList.add(cursor.getString(cursor.getColumnIndex("expenseType")));
+                arrayList.add(cursor.getString(cursor.getColumnIndex("id")));
+                arrayList.add(cursor.getString(cursor.getColumnIndex("typeExpanse")));
                 arrayList.add(cursor.getString(cursor.getColumnIndex("price")));
                 cursor.moveToNext();
             }
             return  arrayList;
     }
-
+    public ArrayList getUsers(){
+        SQLiteDatabase myDB=this.getReadableDatabase();
+        ArrayList <String> arrayList=new ArrayList<>();
+        Cursor cursor=myDB.rawQuery("SELECT * FROM users",null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            arrayList.add(cursor.getString(cursor.getColumnIndex("id")));
+            arrayList.add(cursor.getString(cursor.getColumnIndex("username")));
+            arrayList.add(cursor.getString(cursor.getColumnIndex("email")));
+            arrayList.add(cursor.getString(cursor.getColumnIndex("phone")));
+            cursor.moveToNext();
+        }
+        return  arrayList;
+    }
 
 }
 
